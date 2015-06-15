@@ -1,0 +1,24 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "",
+  "authors": [ "" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "dependencies": {
+    "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
+    "Microsoft.CodeAnalysis.Workspaces.Common": "1.0.0-rc2"
+  },
+  "frameworks": {
+    "dnx451": {
+      "frameworkAssemblies": {
+        "System.Runtime": "4.0.10.0",
+        "System.Text.Encoding": "4.0.0.0",
+        "System.Threading.Tasks": "4.0.0.0"
+      }
+    }
+  },
+  "commands": {
+    "start": "Generator"
+  }
+}
