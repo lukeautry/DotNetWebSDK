@@ -1418,6 +1418,17 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "RazorEngine/4.2.0-beta2": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "4.0.0-beta1"
+        },
+        "compile": {
+          "lib/net45/RazorEngine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/RazorEngine.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.0-alpha-002": {
         "compile": {
           "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.dll": {}
@@ -2613,6 +2624,17 @@
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
         "tools/install.ps1"
+      ]
+    },
+    "RazorEngine/4.2.0-beta2": {
+      "sha512": "NYGrC8oTmfetTJE1C9BuuzT1pwTrNfAMrlw75VxzKjZt0WBokNMkR38X88/w+e40Uxu8hW+3HXk+Wcy8LJxbMg==",
+      "files": [
+        "LICENSE.md",
+        "RazorEngine.4.2.0-beta2.nupkg",
+        "RazorEngine.4.2.0-beta2.nupkg.sha512",
+        "RazorEngine.nuspec",
+        "lib/net45/RazorEngine.dll",
+        "lib/net45/RazorEngine.xml"
       ]
     },
     "Remotion.Linq/2.0.0-alpha-002": {

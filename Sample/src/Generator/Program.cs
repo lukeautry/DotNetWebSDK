@@ -3,7 +3,9 @@ using Microsoft.CodeAnalysis.CSharp;
 using System.IO;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
-using Microsoft.CodeAnalysis;
+using Generator.Models;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace Generator
 {
@@ -42,6 +44,7 @@ namespace Generator
 
                 var typescriptClass = new TypeScriptClass();
                 typescriptClass.Name = classSymbol.Name;
+                typescriptClass.Properties = new List<TypeScriptProperty>();
 
                 var propertySyntaxes = tree.GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>();
                 foreach (var propertySyntax in propertySyntaxes)
@@ -50,22 +53,20 @@ namespace Generator
                     var typeScriptProperty = new TypeScriptProperty();
                     typeScriptProperty.Name = propertySymbol.Name;
                     typeScriptProperty.Type = "string";
+
+                    typescriptClass.Properties.Add(typeScriptProperty);
                 }
 
                 classes.Add(typescriptClass);
             }
+
+            var classTemplate = File.ReadAllText(@"Templates/TypeScriptClass.cshtml");
+
+            foreach (var typeScriptClass in classes)
+            {
+                var result = Engine.Razor.RunCompile(classTemplate, "key", typeof(TypeScriptClass), typeScriptClass);
+                File.WriteAllText(Path.Combine(outputDirectory, typeScriptClass.Name + ".ts"), result);
+            }
         }
-    }
-
-    public class TypeScriptClass
-    {
-        public string Name { get; set; }
-        public List<TypeScriptProperty> Properties;
-    }
-
-    public class TypeScriptProperty
-    {
-        public string Name { get; set; }
-        public string Type { get; set; }
     }
 }
