@@ -1,4 +1,4 @@
-﻿using Generator;
+﻿using DotNetWebSdkGeneration;
 
 namespace Sample.Models
 {

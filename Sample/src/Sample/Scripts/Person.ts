@@ -1,5 +1,5 @@
 class Person {
-    Id: string;
-    Email: string;
-    Widget: string;
+	Id: string;
+	Email: string;
+	Widget: string;
 }

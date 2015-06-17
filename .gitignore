@@ -1,1 +1,4 @@
 Sample/src/Sample/node_modules/*
+DotNetWebSdkGeneration/artifacts/*
+DotNetWebSdkGeneration/packages/*
+DotNetWebSdkGeneration/src/DotNetWebSdkGeneration/bin/*

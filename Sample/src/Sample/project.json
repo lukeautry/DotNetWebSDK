@@ -1,7 +1,7 @@
 {
+  "userSecretsId": "aspnet5-Sample-20150617075629",
   "webroot": "wwwroot",
   "version": "1.0.0-*",
-
   "dependencies": {
     "Microsoft.AspNet.Diagnostics": "1.0.0-beta5-13220",
     "Microsoft.AspNet.Mvc": "6.0.0-beta5-14093",
@@ -16,12 +16,12 @@
     "Microsoft.Framework.Logging.Console": "1.0.0-beta5-11461",
     "Microsoft.Framework.DependencyInjection": "1.0.0-beta5-11470",
     "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta5-11470",
-    "Generator": "1.0.0-*"
+    "DotNetWebSdkGeneration": "1.0.0.4"
   },
   "commands": {
     "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
     "gen": "Microsoft.Framework.CodeGeneration",
-    "ts-gen": "Generator"
+    "ts-gen": "DotNetWebSdkGeneration"
   },
   "frameworks": {
     "dnx451": { }
@@ -40,6 +40,7 @@
   ],
   "scripts": {
     "prepare": [
+      "dnx . ts-gen"
     ]
   }
 }

@@ -1,15 +1,13 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "",
-  "authors": [ "" ],
+  "version": "1.0.0.04",
+  "description": "DotNetWebSdkGeneration",
+  "authors": [ "Luke Autry" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "dependencies": {
     "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
-    "Microsoft.CodeAnalysis.Workspaces.Common": "1.0.0-rc2",
-    "RazorEngine": "4.2.0-beta2",
-    "Microsoft.AspNet.Mvc": "6.0.0-beta4"
+    "DotLiquid": "1.8.0"
   },
   "frameworks": {
     "dnx451": {
@@ -21,6 +19,9 @@
     }
   },
   "commands": {
-    "start": "Generator"
-  }
+    "start": "DotNetWebSdkGeneration"
+  },
+  "resource": [
+    "Templates\\**\\*.liq"
+  ]
 }

@@ -1,12 +1,9 @@
 ﻿using System;
 
-namespace Generator
+namespace DotNetWebSdkGeneration
 {
     public class GeneratedModel : Attribute
     {
-        public GeneratedModel()
-        {
 
-        }
     }
 }

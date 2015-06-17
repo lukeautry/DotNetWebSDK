@@ -1,4 +1,4 @@
 class Widget {
-    Id: string;
-    Name: string;
+	Id: string;
+	Name: string;
 }

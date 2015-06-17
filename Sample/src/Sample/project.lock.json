@@ -3,6 +3,35 @@
   "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "DotLiquid/1.8.0": {
+        "compile": {
+          "lib/NET45/DotLiquid.dll": {}
+        },
+        "runtime": {
+          "lib/NET45/DotLiquid.dll": {}
+        }
+      },
+      "DotNetWebSdkGeneration/1.0.0.04": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
+          "DotLiquid": "1.8.0"
+        },
+        "frameworkAssemblies": [
+          "System.Runtime",
+          "System.Text.Encoding",
+          "System.Threading.Tasks",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/dnx451/DotNetWebSdkGeneration.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/DotNetWebSdkGeneration.dll": {}
+        }
+      },
       "EntityFramework.Core/7.0.0-beta5-13437": {
         "dependencies": {
           "Ix-Async": "1.2.3",
@@ -783,36 +812,6 @@
           "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
         }
       },
-      "Microsoft.CodeAnalysis.Workspaces.Common/1.0.0-rc2": {
-        "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "[1.0.0-rc2]",
-          "Microsoft.Composition": "1.0.27"
-        },
-        "compile": {
-          "lib/net45/Microsoft.CodeAnalysis.Workspaces.Desktop.dll": {},
-          "lib/net45/Microsoft.CodeAnalysis.Workspaces.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.CodeAnalysis.Workspaces.Desktop.dll": {},
-          "lib/net45/Microsoft.CodeAnalysis.Workspaces.dll": {}
-        }
-      },
-      "Microsoft.Composition/1.0.27": {
-        "compile": {
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.AttributedModel.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.Convention.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.Hosting.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.Runtime.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.TypedParts.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.AttributedModel.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.Convention.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.Hosting.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.Runtime.dll": {},
-          "lib/portable-net45+win8+wp8+wpa81/System.Composition.TypedParts.dll": {}
-        }
-      },
       "Microsoft.Framework.Caching.Abstractions/1.0.0-beta5-11475": {
         "frameworkAssemblies": [
           "mscorlib",
@@ -1418,17 +1417,6 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "RazorEngine/4.2.0-beta2": {
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "4.0.0-beta1"
-        },
-        "compile": {
-          "lib/net45/RazorEngine.dll": {}
-        },
-        "runtime": {
-          "lib/net45/RazorEngine.dll": {}
-        }
-      },
       "Remotion.Linq/2.0.0-alpha-002": {
         "compile": {
           "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.dll": {}
@@ -1459,6 +1447,31 @@
     }
   },
   "libraries": {
+    "DotLiquid/1.8.0": {
+      "sha512": "VZakikO860nzk7pliV7kx2DDFen6PqwOCuSVh3o6t9EkNXPpsXklRMWGK70vltkWhFhhAA29XJuWJKU4ADXKrA==",
+      "files": [
+        "DotLiquid.1.8.0.nupkg",
+        "DotLiquid.1.8.0.nupkg.sha512",
+        "DotLiquid.nuspec",
+        "LICENSE.txt",
+        "lib/NET35/DotLiquid.dll",
+        "lib/NET40/DotLiquid.dll",
+        "lib/NET45/DotLiquid.dll"
+      ]
+    },
+    "DotNetWebSdkGeneration/1.0.0.04": {
+      "sha512": "LozXjfcCU0kaHOpVgZKDbFG+bYQo5iydSbgPDoAniJz562heoYvsUZUJQLXqLKzzY1fcjtSlcXWFNn96bbORow==",
+      "files": [
+        "DotNetWebSdkGeneration.1.0.0.04.nupkg",
+        "DotNetWebSdkGeneration.1.0.0.04.nupkg.sha512",
+        "DotNetWebSdkGeneration.nuspec",
+        "app/project.json",
+        "app/start",
+        "app/start.cmd",
+        "lib/dnx451/DotNetWebSdkGeneration.dll",
+        "lib/dnx451/DotNetWebSdkGeneration.xml"
+      ]
+    },
     "EntityFramework.Core/7.0.0-beta5-13437": {
       "serviceable": true,
       "sha512": "Wlz4ezkETMUILIpvGU8J0fIbNwnU4unEzeYf21OqT9dQVcKus/HtIV1ufQsIg9bN+Lwdu4ESDgD40TuChvPmPg==",
@@ -2031,41 +2044,6 @@
         "lib/portable-net45+win8/Microsoft.CodeAnalysis.CSharp.xml"
       ]
     },
-    "Microsoft.CodeAnalysis.Workspaces.Common/1.0.0-rc2": {
-      "sha512": "1KgosYakcYnT2nXERFTjHoL5uW/nYQQ1MLMg75rOuVH6uW+RVYAOcmYsi6EM3HjjyRZVP65hzY9xOeWrH4LkNA==",
-      "files": [
-        "Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-rc2.nupkg",
-        "Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-rc2.nupkg.sha512",
-        "Microsoft.CodeAnalysis.Workspaces.Common.nuspec",
-        "ThirdPartyNotices.rtf",
-        "lib/net45/Microsoft.CodeAnalysis.Workspaces.Desktop.dll",
-        "lib/net45/Microsoft.CodeAnalysis.Workspaces.Desktop.xml",
-        "lib/net45/Microsoft.CodeAnalysis.Workspaces.dll",
-        "lib/net45/Microsoft.CodeAnalysis.Workspaces.xml",
-        "lib/portable-net45+win8/Microsoft.CodeAnalysis.Workspaces.dll",
-        "lib/portable-net45+win8/Microsoft.CodeAnalysis.Workspaces.xml"
-      ]
-    },
-    "Microsoft.Composition/1.0.27": {
-      "serviceable": true,
-      "sha512": "pwu80Ohe7SBzZ6i69LVdzowp6V+LaVRzd5F7A6QlD42vQkX0oT7KXKWWPlM/S00w1gnMQMRnEdbtOV12z6rXdQ==",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Composition.1.0.27.nupkg",
-        "Microsoft.Composition.1.0.27.nupkg.sha512",
-        "Microsoft.Composition.nuspec",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.AttributedModel.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.AttributedModel.XML",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Convention.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Convention.xml",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Hosting.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Hosting.XML",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Runtime.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Runtime.XML",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.TypedParts.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Composition.TypedParts.XML"
-      ]
-    },
     "Microsoft.Framework.Caching.Abstractions/1.0.0-beta5-11475": {
       "serviceable": true,
       "sha512": "mFXy+WSwtstKyU+4qCaG26A/H1DKTzDMYrye1pC5RDwzrVAZDcjM2/0ZCuJc3OZtqQYCRdW36DL+1jnVU/HWwA==",
@@ -2626,17 +2604,6 @@
         "tools/install.ps1"
       ]
     },
-    "RazorEngine/4.2.0-beta2": {
-      "sha512": "NYGrC8oTmfetTJE1C9BuuzT1pwTrNfAMrlw75VxzKjZt0WBokNMkR38X88/w+e40Uxu8hW+3HXk+Wcy8LJxbMg==",
-      "files": [
-        "LICENSE.md",
-        "RazorEngine.4.2.0-beta2.nupkg",
-        "RazorEngine.4.2.0-beta2.nupkg.sha512",
-        "RazorEngine.nuspec",
-        "lib/net45/RazorEngine.dll",
-        "lib/net45/RazorEngine.xml"
-      ]
-    },
     "Remotion.Linq/2.0.0-alpha-002": {
       "sha512": "7vNxTm6wl76ck2VcfWM4eVOL61zwFSUtm4uniJ0S/YPea53e7V1b8tdGZMivhRo6lCvLhK9FQ32yU59zHMBhXg==",
       "files": [
@@ -2687,7 +2654,7 @@
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta5-11461",
       "Microsoft.Framework.DependencyInjection >= 1.0.0-beta5-11470",
       "Microsoft.Framework.DependencyInjection.Abstractions >= 1.0.0-beta5-11470",
-      "Generator >= 1.0.0-*"
+      "DotNetWebSdkGeneration >= 1.0.0.4"
     ],
     "DNX,Version=v4.5.1": []
   }
