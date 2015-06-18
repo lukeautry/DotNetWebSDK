@@ -2,8 +2,7 @@
 
 namespace DotNetWebSdkGeneration
 {
-    public class GeneratedModel : Attribute
-    {
+    public class GeneratedModel : Attribute { 
 
     }
 }

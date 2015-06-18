@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Immutable;
 
 namespace DotNetWebSdkGeneration.Models
 {
     public class TypeScriptClass
     {
         public string Name { get; set; }
-        public List<TypeScriptProperty> Properties { get; set; }
+        public ImmutableList<TypeScriptProperty> Properties { get; set; }
     }
 }
