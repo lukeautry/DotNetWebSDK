@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using DotLiquid;
+using DotNetWebSdkGeneration.CommandLineParsing;
 using DotNetWebSdkGeneration.Models;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -14,10 +15,15 @@ namespace DotNetWebSdkGeneration
     {
         public static void Main(string[] args)
         {
-            var sourceDirectory = @"Z:\Code\sdkgen\Sample\src\Sample";
-            var outputDirectory = @"Z:\Code\sdkgen\Sample\src\Sample\Scripts";
+            var arguments = new CommandLineArgumentParser(args);
 
-            var sourceFilePaths = Directory.GetFiles(sourceDirectory, "*.cs", SearchOption.AllDirectories);
+            var sourcePath = arguments.GetSourcePath();
+            var outputPath = arguments.GetOutputPath();
+
+            //var sourceDirectory = @"Z:\Code\sdkgen\Sample\src\Sample";
+            //var outputDirectory = @"Z:\Code\sdkgen\Sample\src\Sample\Scripts";
+
+            var sourceFilePaths = Directory.GetFiles(sourcePath, "*.cs", SearchOption.AllDirectories);
 
             var classes = new List<TypeScriptClass>();
 
@@ -82,7 +88,7 @@ namespace DotNetWebSdkGeneration
             {
                 var result = template.Render(Hash.FromAnonymousObject(typeScriptClass));
 
-                File.WriteAllText(Path.Combine(outputDirectory, typeScriptClass.Name + ".ts"), result);
+                File.WriteAllText(Path.Combine(outputPath, typeScriptClass.Name + ".ts"), result);
             }
         }
     }

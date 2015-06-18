@@ -11,6 +11,27 @@
           "lib/NET45/DotLiquid.dll": {}
         }
       },
+      "DotNetWebSdkGeneration/1.0.0.04": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
+          "DotLiquid": "1.8.0"
+        },
+        "frameworkAssemblies": [
+          "System.Runtime",
+          "System.Text.Encoding",
+          "System.Threading.Tasks",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/dnx451/DotNetWebSdkGeneration.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/DotNetWebSdkGeneration.dll": {}
+        }
+      },
       "Microsoft.CodeAnalysis.Analyzers/1.0.0-rc3": {
         "frameworkAssemblies": [
           "System"
@@ -72,6 +93,19 @@
         "lib/NET35/DotLiquid.dll",
         "lib/NET40/DotLiquid.dll",
         "lib/NET45/DotLiquid.dll"
+      ]
+    },
+    "DotNetWebSdkGeneration/1.0.0.04": {
+      "sha512": "LozXjfcCU0kaHOpVgZKDbFG+bYQo5iydSbgPDoAniJz562heoYvsUZUJQLXqLKzzY1fcjtSlcXWFNn96bbORow==",
+      "files": [
+        "DotNetWebSdkGeneration.1.0.0.04.nupkg",
+        "DotNetWebSdkGeneration.1.0.0.04.nupkg.sha512",
+        "DotNetWebSdkGeneration.nuspec",
+        "app/project.json",
+        "app/start",
+        "app/start.cmd",
+        "lib/dnx451/DotNetWebSdkGeneration.dll",
+        "lib/dnx451/DotNetWebSdkGeneration.xml"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.0.0-rc3": {

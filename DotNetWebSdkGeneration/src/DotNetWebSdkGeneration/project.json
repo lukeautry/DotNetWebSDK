@@ -19,7 +19,7 @@
     }
   },
   "commands": {
-    "start": "DotNetWebSdkGeneration"
+    "start": "DotNetWebSdkGeneration --source=Z:\\Code\\sdkgen\\Sample\\src\\Sample --output=Z:\\Code\\sdkgen\\Sample\\src\\Sample\\Scripts"
   },
   "resource": [
     "Templates\\**\\*.liq"
