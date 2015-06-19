@@ -1,5 +1,8 @@
 class Person {
 	Id: number;
 	Email: string;
-	Widget: string;
+	Age: number;
+	CreationDate: Date;
+	EditDate: Date;
+	Widget: any;
 }

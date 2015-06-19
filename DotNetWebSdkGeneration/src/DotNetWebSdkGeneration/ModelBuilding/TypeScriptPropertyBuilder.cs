@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using DotNetWebSdkGeneration.Models;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace DotNetWebSdkGeneration.ModelBuilding
 {
@@ -12,8 +11,9 @@ namespace DotNetWebSdkGeneration.ModelBuilding
         private const string BoolType = "boolean";
         private const string StringType = "string";
         private const string DateType = "Date";
+        private const string AnyType = "any";
 
-        private static readonly Dictionary<TypeCode, string> TypeCodesToTypeScriptPropertyName = new Dictionary<TypeCode, string>
+        private static readonly Dictionary<TypeCode, string> PrimitiveCodesToPropertyNames = new Dictionary<TypeCode, string>
         {
             {TypeCode.Int16, NumberType },
             {TypeCode.Int32, NumberType },
@@ -34,41 +34,53 @@ namespace DotNetWebSdkGeneration.ModelBuilding
             {TypeCode.DateTime, DateType },
         }; 
 
-        internal static TypeScriptProperty Build(PropertyDeclarationSyntax propertySyntax, SemanticModel semanticModel)
+        internal static TypeScriptProperty Build(IPropertySymbol propertySymbol)
         {
-            var propertySymbol = semanticModel.GetDeclaredSymbol(propertySyntax) as IPropertySymbol;
-            if (propertySymbol == null)
-            {
-                throw new Exception("Failed to cast property to IPropertySymbol.");
-            }
-
             return new TypeScriptProperty
             {
                 Name = propertySymbol.Name,
-                Type = GetType(propertySymbol)
+                Type = GetType(propertySymbol.Type)
             };
         }
 
-        private static string GetType(IPropertySymbol propertySymbol)
+        private static string GetType(ITypeSymbol typeSymbol)
         {
-            var isPrimitive = propertySymbol.Type.IsValueType || propertySymbol.Type.ContainingNamespace.ToString().Contains("System");
-            if (isPrimitive)
-            {
-                var typeFullName = propertySymbol.Type.ContainingNamespace + "." + propertySymbol.Type.Name;
+            string typeName;
 
-                var type = Type.GetType(typeFullName);
-                if (type != null)
-                {
-                    string typeName;
-                    var success = TypeCodesToTypeScriptPropertyName.TryGetValue(Type.GetTypeCode(type), out typeName);
-                    if (success)
-                    {
-                        return typeName;
-                    }
-                }
+            var success = GetKnownTypeName(typeSymbol, out typeName);
+            if (success)
+            {
+                return typeName;
             }
 
-            return StringType;
+            // This is a type we don't know about
+
+            return AnyType;
+        }
+
+        private static bool GetKnownTypeName(ITypeSymbol typeSymbol, out string typeName)
+        {
+            var extractedTypeName = ExtractTypeNameFromSymbol(typeSymbol);
+
+            var type = Type.GetType(extractedTypeName);
+            if (type != null)
+            { 
+                return PrimitiveCodesToPropertyNames.TryGetValue(Type.GetTypeCode(type), out typeName);
+            }
+
+            typeName = string.Empty;
+            return false;
+        }
+
+        private static string ExtractTypeNameFromSymbol(ITypeSymbol typeSymbol)
+        {
+            // TODO: At some point we need to find a way to get the underlying type, but the API is making it hard
+            var name = typeSymbol.ToString();
+            if (name == "int?") { return "System.Int32"; }
+            if (name == "bool?") { return "System.Boolean"; }
+            if (name == "System.DateTime?") { return "System.DateTime"; }
+
+            return typeSymbol.ContainingNamespace + "." + typeSymbol.Name;
         }
     }
 }

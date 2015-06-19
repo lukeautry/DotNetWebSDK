@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.Linq;
 using DotNetWebSdkGeneration.Models;
 using Microsoft.CodeAnalysis;
@@ -20,7 +21,16 @@ namespace DotNetWebSdkGeneration.ModelBuilding
         private static ImmutableList<TypeScriptProperty> GetProperties(SyntaxTree syntaxTree, SemanticModel semanticModel)
         {
             var propertySyntaxes = syntaxTree.GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>();
-            return propertySyntaxes.Select(propertySyntax => TypeScriptPropertyBuilder.Build(propertySyntax, semanticModel)).ToImmutableList();
+            return propertySyntaxes.Select(propertySyntax =>
+            {
+                var propertySymbol = semanticModel.GetDeclaredSymbol(propertySyntax) as IPropertySymbol;
+                if (propertySymbol == null)
+                {
+                    throw new Exception("Failed to cast symbol to IPropertySymbol.");
+                }
+
+                return TypeScriptPropertyBuilder.Build(propertySymbol);
+            }).ToImmutableList();
         }
     }
 }

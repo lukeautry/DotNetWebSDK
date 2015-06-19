@@ -1,4 +1,5 @@
-﻿using DotNetWebSdkGeneration;
+﻿using System;
+using DotNetWebSdkGeneration;
 
 namespace Sample.Models
 {
@@ -7,6 +8,9 @@ namespace Sample.Models
     {
         public int Id { get; set; }
         public string Email { get; set; }
+        public int? Age { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime? EditDate { get; set; }
 
         public Widget Widget { get; set; }
     }

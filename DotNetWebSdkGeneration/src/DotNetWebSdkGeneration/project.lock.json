@@ -181,6 +181,8 @@
     ],
     "DNX,Version=v4.5.1": [
       "framework/System.Runtime >= 4.0.10.0",
+      "framework/System.Reflection >= 4.0.0.0",
+      "framework/System.Collections >= 4.0.0.0",
       "framework/System.Text.Encoding >= 4.0.0.0",
       "framework/System.Threading.Tasks >= 4.0.0.0"
     ]
