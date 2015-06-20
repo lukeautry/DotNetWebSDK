@@ -13,5 +13,6 @@ namespace Sample.Models
         public DateTime? EditDate { get; set; }
 
         public Widget Widget { get; set; }
+        public UnmarkedClass UnmarkedReference { get; set; }
     }
 }

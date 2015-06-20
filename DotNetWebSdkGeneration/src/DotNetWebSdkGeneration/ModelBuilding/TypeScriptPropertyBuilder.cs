@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DotNetWebSdkGeneration.Models;
 using Microsoft.CodeAnalysis;
 
@@ -43,6 +44,28 @@ namespace DotNetWebSdkGeneration.ModelBuilding
             };
         }
 
+        public static TypeScriptProperty ResolveIfNecessary(TypeScriptProperty property, List<TypeScriptClass> typeScriptClasses)
+        {
+            if (IsKnownType(property.Type))
+            {
+                return property;
+            }
+
+            if (typeScriptClasses.Any(typeScriptClass => typeScriptClass.Name == property.Type))
+            {
+                return property;
+            }
+
+            // No resolution possible, apparently
+            property.Type = AnyType;
+            return property;
+        }
+
+        private static bool IsKnownType(string propertyType)
+        {
+            return propertyType == NumberType || propertyType == StringType || propertyType == BoolType || propertyType == DateType;
+        }
+
         private static string GetType(ITypeSymbol typeSymbol)
         {
             string typeName;
@@ -54,8 +77,7 @@ namespace DotNetWebSdkGeneration.ModelBuilding
             }
 
             // This is a type we don't know about
-
-            return AnyType;
+            return typeSymbol.Name;
         }
 
         private static bool GetKnownTypeName(ITypeSymbol typeSymbol, out string typeName)

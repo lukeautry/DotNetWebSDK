@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using DotNetWebSdkGeneration.Models;
@@ -31,6 +32,16 @@ namespace DotNetWebSdkGeneration.ModelBuilding
 
                 return TypeScriptPropertyBuilder.Build(propertySymbol);
             }).ToImmutableList();
+        }
+
+        public static TypeScriptClass ResolveUnknownTypes(TypeScriptClass typeScriptClass, List<TypeScriptClass> otherClasses)
+        {
+            return new TypeScriptClass
+            {
+                Name = typeScriptClass.Name,
+                Properties =
+                    typeScriptClass.Properties.Select(p => TypeScriptPropertyBuilder.ResolveIfNecessary(p, otherClasses)).ToImmutableList()
+            };
         }
     }
 }

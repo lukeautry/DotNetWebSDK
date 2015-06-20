@@ -4,5 +4,6 @@ class Person {
 	Age: number;
 	CreationDate: Date;
 	EditDate: Date;
-	Widget: any;
+	Widget: Widget;
+	UnmarkedReference: any;
 }

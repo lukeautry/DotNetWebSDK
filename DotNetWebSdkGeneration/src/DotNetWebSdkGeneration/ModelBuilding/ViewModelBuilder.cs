@@ -41,6 +41,8 @@ namespace DotNetWebSdkGeneration.ModelBuilding
                 }
             }
 
+            classes = classes.Select(c => TypeScriptClassBuilder.ResolveUnknownTypes(c, classes)).ToList();
+
             return classes;
         }
     }
