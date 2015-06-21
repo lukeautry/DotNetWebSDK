@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0.04",
+  "version": "1.0.0.05",
   "description": "DotNetWebSdkGeneration",
   "authors": [ "Luke Autry" ],
   "tags": [ "" ],
@@ -21,7 +21,7 @@
     }
   },
   "commands": {
-    "start": "DotNetWebSdkGeneration --source=Z:\\Code\\sdkgen\\Sample\\src\\Sample --output=Z:\\Code\\sdkgen\\Sample\\src\\Sample\\Scripts"
+    "start": "DotNetWebSdkGeneration --source=Z:\\Code\\sdkgen\\Sample\\src\\Sample --output=Z:\\Code\\sdkgen\\Sample\\src\\Sample\\Scripts\\Generated"
   },
   "resource": [
     "Templates\\**\\*.liq"

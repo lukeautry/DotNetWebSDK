@@ -36,12 +36,19 @@ namespace DotNetWebSdkGeneration.ModelBuilding
 
         public static TypeScriptClass ResolveUnknownTypes(TypeScriptClass typeScriptClass, List<TypeScriptClass> otherClasses)
         {
-            return new TypeScriptClass
+            var newClassInstance = new TypeScriptClass
             {
                 Name = typeScriptClass.Name,
                 Properties =
                     typeScriptClass.Properties.Select(p => TypeScriptPropertyBuilder.ResolveIfNecessary(p, otherClasses)).ToImmutableList()
             };
+
+            newClassInstance.References = otherClasses.Where(c =>
+            {
+                return newClassInstance.Properties.Any(p => p.Type == c.Name);
+            }).ToImmutableList();
+
+            return newClassInstance;
         }
     }
 }

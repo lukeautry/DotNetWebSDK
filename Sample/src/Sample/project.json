@@ -16,7 +16,7 @@
     "Microsoft.Framework.Logging.Console": "1.0.0-beta5-11461",
     "Microsoft.Framework.DependencyInjection": "1.0.0-beta5-11470",
     "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta5-11470",
-    "DotNetWebSdkGeneration": "1.0.0.4"
+    "DotNetWebSdkGeneration": "1.0.0.5"
   },
   "commands": {
     "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
@@ -40,7 +40,7 @@
   ],
   "scripts": {
     "prepare": [
-      "dnx . ts-gen"
+      "dnx . ts-gen --output=%project:Directory%/Scripts/Generated --source=%project:Directory%"
     ]
   }
 }
