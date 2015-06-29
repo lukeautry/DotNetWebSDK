@@ -1,21 +1,18 @@
 ﻿using System.Collections.Immutable;
-using DotLiquid;
 
 namespace DotNetWebSdkGeneration.Models
 {
-    public class TypeScriptClass : ILiquidizable
+    public class TypeScriptClass
     {
-        public string Name { get; set; }
-        public ImmutableList<TypeScriptProperty> Properties { get; set; }
-        public ImmutableList<TypeScriptClass> References { get; set; }
+        public readonly string Name;
+        public readonly ImmutableList<TypeScriptProperty> Properties;
+        public readonly ImmutableList<string> References;
 
-        public object ToLiquid()
+        public TypeScriptClass(string name, ImmutableList<TypeScriptProperty> properties, ImmutableList<string> references)
         {
-            return new
-            {
-                Name,
-                Properties
-            };
+            Name = name;
+            Properties = properties;
+            References = references;
         }
     }
 }

@@ -7,8 +7,11 @@ class Person {
 	Age: number;
 	CreationDate: Date;
 	EditDate: Date;
-	PhoneNumbers: any;
+	PhoneNumbers: Array<string>;
 	Widget: Widget;
+	WidgetList: Array<Widget>;
+	WidgetArray: Array<Widget>;
+	WidgetIEnumerable: Array<Widget>;
 	UnmarkedReference: any;
 }
 
