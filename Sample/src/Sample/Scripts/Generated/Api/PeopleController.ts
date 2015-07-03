@@ -15,7 +15,7 @@ class PeopleController extends Controller {
 	public GetPerson(personId: number, anotherProperty: string): ApiPromise<Person> {
 		return this.CallApi<Person>({
 			Verb: "GET",
-			Endpoint: "People/" + personId,
+			Endpoint: "People/" + personId + "?anotherProperty=" + anotherProperty,
 			Data: null			
 		});
 	}

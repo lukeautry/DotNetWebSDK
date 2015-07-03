@@ -20,7 +20,7 @@ define(["require", "exports", "./Controller"], function (require, exports, Contr
         PeopleController.prototype.GetPerson = function (personId, anotherProperty) {
             return this.CallApi({
                 Verb: "GET",
-                Endpoint: "People/" + personId,
+                Endpoint: "People/" + personId + "?anotherProperty=" + anotherProperty,
                 Data: null
             });
         };

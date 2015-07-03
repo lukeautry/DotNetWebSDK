@@ -66,19 +66,19 @@ namespace DotNetWebSdkGeneration.Models
             var endpoint = GetEndpointWithRouteParameters();
 
             var queryStringableArguments = Arguments.Where(a => !endpoint.Contains(a.Name) && IsValidTypeForQueryString(a.Type)).ToImmutableList();
-            if (queryStringableArguments.Any())
+            if (!queryStringableArguments.Any())
             {
-                var sb = new StringBuilder(endpoint).Append(" + \"?");
-
-                foreach (var argument in queryStringableArguments)
-                {
-                    sb.AppendFormat("{0}=\" + {1}", argument.Name, argument.Name);
-                }
-
-                sb.Append("\"");
+                return endpoint;
             }
 
-            return endpoint;
+            var sb = new StringBuilder(endpoint).Append(" + \"?");
+
+            foreach (var argument in queryStringableArguments)
+            {
+                sb.AppendFormat("{0}=\" + {1}", argument.Name, argument.Name);
+            }
+            
+            return sb.ToString();
         }
 
         private bool IsValidTypeForQueryString(string type)
