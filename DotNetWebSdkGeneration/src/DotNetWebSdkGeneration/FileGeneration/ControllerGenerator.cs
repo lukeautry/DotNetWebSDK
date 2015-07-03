@@ -1,23 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using DotLiquid;
+using DotNetWebSdkGeneration.Attributes;
 using DotNetWebSdkGeneration.CommandLineParsing;
 using DotNetWebSdkGeneration.Models;
 
-namespace DotNetWebSdkGeneration
+namespace DotNetWebSdkGeneration.FileGeneration
 {
-    internal sealed class ApiClassGenerator : Generator
+    internal static class ControllerGenerator
     {
         private const string ApiDirectoryName = "Api";
 
-        internal ApiClassGenerator(ImmutableList<TypeScriptClass> models, CommandLineArgumentParser arguments)
+        internal static ImmutableList<TypeScriptApiController> Generate(ImmutableList<TypeScriptClass> models, CommandLineArgumentParser arguments)
         {
             var outputPath = arguments.GetOutputPath();
-            CreateDirectoryIfNecessary(outputPath, ApiDirectoryName);
+            FileGenerationHelper.CreateDirectoryIfNecessary(outputPath, ApiDirectoryName);
             
             var sourceFileProcessors = SourceFileProcessor.GetSourceFileProcessors(arguments.GetSourcePath(), typeof(GeneratedController));
 
@@ -57,11 +58,13 @@ namespace DotNetWebSdkGeneration
                 CopyStaticTypeScriptFiles(Path.Combine(outputPath, ApiDirectoryName));
                 RenderQueryTemplate(outputPath, arguments.GetBaseApiUrl());
             }
+
+            return controllers.ToImmutableList();
         }
 
-        private void RenderControllers(ImmutableList<TypeScriptApiController> controllers, string outputPath)
+        private static void RenderControllers(ImmutableList<TypeScriptApiController> controllers, string outputPath)
         {
-            var template = GetTemplate("Api.DynamicController.liq");
+            var template = FileGenerationHelper.GetTemplate("Api.DynamicController.liq");
 
             foreach (var controller in controllers)
             {
@@ -76,7 +79,7 @@ namespace DotNetWebSdkGeneration
 
         private static void RenderQueryTemplate(string outputPath, string baseApiUrl)
         {
-            var template = GetTemplate("Api.Controller.ts");
+            var template = FileGenerationHelper.GetTemplate("Api.Controller.ts");
 
             var renderedContent = template.Render(Hash.FromAnonymousObject(new
             {
@@ -97,7 +100,7 @@ namespace DotNetWebSdkGeneration
             var assembly = Assembly.GetExecutingAssembly();
             foreach (var filePath in staticTypeScriptPaths)
             {
-                var fileContent = GetResourceContent(assembly, filePath.Value);
+                var fileContent = FileGenerationHelper.GetResourceContent(assembly, filePath.Value);
                 File.WriteAllText(Path.Combine(outputPath, filePath.Key), fileContent);
             }
         }

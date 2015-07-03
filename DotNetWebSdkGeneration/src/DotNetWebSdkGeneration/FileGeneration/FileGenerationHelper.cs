@@ -3,11 +3,11 @@ using System.IO;
 using System.Reflection;
 using DotLiquid;
 
-namespace DotNetWebSdkGeneration
+namespace DotNetWebSdkGeneration.FileGeneration
 {
-    internal abstract class Generator
+    internal static class FileGenerationHelper
     {
-        protected static Template GetTemplate(string periodSeparatedPath)
+        internal static Template GetTemplate(string periodSeparatedPath)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "DotNetWebSdkGeneration.Templates." + periodSeparatedPath;
@@ -17,7 +17,7 @@ namespace DotNetWebSdkGeneration
             return template;
         }
 
-        protected static string GetResourceContent(Assembly assembly, string resourceName)
+        internal static string GetResourceContent(Assembly assembly, string resourceName)
         {
             string resourceContent;
 
@@ -35,7 +35,7 @@ namespace DotNetWebSdkGeneration
             return resourceContent;
         }
 
-        protected static void CreateDirectoryIfNecessary(string outputPath, string directoryName)
+        internal static void CreateDirectoryIfNecessary(string outputPath, string directoryName)
         {
             var fullPath = Path.Combine(outputPath, directoryName);
             var directoryExists = Directory.Exists(fullPath);

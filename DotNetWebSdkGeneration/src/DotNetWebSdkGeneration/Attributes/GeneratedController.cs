@@ -1,5 +1,6 @@
 ﻿using System;
-namespace DotNetWebSdkGeneration
+
+namespace DotNetWebSdkGeneration.Attributes
 {
     public class GeneratedController : Attribute
     {
