@@ -1,5 +1,6 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DotNetWebSdkGeneration.CommandLineParsing
 {
@@ -49,15 +50,7 @@ namespace DotNetWebSdkGeneration.CommandLineParsing
 
         private static Dictionary<CommandType, string> ParseArguments(IEnumerable<string> commandLineArguments)
         {
-            var dictionary = new Dictionary<CommandType, string>();
-
-            foreach (var arg in commandLineArguments)
-            {
-                var commandToValue = ParseArgument(arg);
-                dictionary.Add(commandToValue.Key, commandToValue.Value);
-            }
-
-            return dictionary;
+            return commandLineArguments.Select(ParseArgument).ToDictionary(commandToValue => commandToValue.Key, commandToValue => commandToValue.Value);
         }
 
         private static KeyValuePair<CommandType, string> ParseArgument(string argument)

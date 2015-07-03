@@ -5,8 +5,8 @@ class Query {
 
     protected CallApi<T>(options: QueryOptions): ApiPromise<T> {
         var promise = new ApiPromise<T>();
-
         var xhr = XMLHttpRequest || ActiveXObject;
+        var endpoint = this.BaseApiUrl + options.Endpoint;
 
         var request = new xhr('MSXML2.XMLHTTP.3.0');
         request.open(options.Verb, options.Endpoint, true);

@@ -7,6 +7,7 @@ define(["require", "exports", "./ApiPromise"], function (require, exports, ApiPr
             var _this = this;
             var promise = new ApiPromise();
             var xhr = XMLHttpRequest || ActiveXObject;
+            var endpoint = this.BaseApiUrl + options.Endpoint;
             var request = new xhr('MSXML2.XMLHTTP.3.0');
             request.open(options.Verb, options.Endpoint, true);
             request.setRequestHeader('Content-type', 'application/json');

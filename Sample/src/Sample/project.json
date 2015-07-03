@@ -39,7 +39,7 @@
     "**.vspscc"
   ],
   "scripts": {
-    "prepare": [
+    "prebuild": [
       "dnx . ts-gen --output=%project:Directory%/Scripts/Generated --source=%project:Directory%"
     ]
   }
