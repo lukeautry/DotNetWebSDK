@@ -5,3 +5,4 @@ DotNetWebSdkGeneration/src/DotNetWebSdkGeneration/bin/*
 DotNetWebSdkGeneration/**/*.js
 Sample/src/Sample/Scripts/Generated/Api/Controller.js.map
 Sample/src/**/*.js.map
+Sample/.vs/*
