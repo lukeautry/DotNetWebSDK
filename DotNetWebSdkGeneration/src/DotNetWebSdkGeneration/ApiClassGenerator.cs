@@ -51,10 +51,12 @@ namespace DotNetWebSdkGeneration
                 controllers.Add(controller);
             }
 
-            RenderControllers(controllers.ToImmutableList(), outputPath);
-
-            CopyStaticTypeScriptFiles(Path.Combine(outputPath, ApiDirectoryName));
-            RenderQueryTemplate(outputPath, arguments.GetBaseApiUrl());
+            if (controllers.Any())
+            {
+                RenderControllers(controllers.ToImmutableList(), outputPath);
+                CopyStaticTypeScriptFiles(Path.Combine(outputPath, ApiDirectoryName));
+                RenderQueryTemplate(outputPath, arguments.GetBaseApiUrl());
+            }
         }
 
         private void RenderControllers(ImmutableList<TypeScriptApiController> controllers, string outputPath)
