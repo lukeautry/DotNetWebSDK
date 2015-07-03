@@ -11,29 +11,6 @@
           "lib/NET45/DotLiquid.dll": {}
         }
       },
-      "DotNetWebSdkGeneration/1.0.0.07": {
-        "dependencies": {
-          "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
-          "DotLiquid": "1.8.0"
-        },
-        "frameworkAssemblies": [
-          "System.Runtime",
-          "System.Reflection",
-          "System.Collections",
-          "System.Text.Encoding",
-          "System.Threading.Tasks",
-          "mscorlib",
-          "System",
-          "System.Core",
-          "Microsoft.CSharp"
-        ],
-        "compile": {
-          "lib/dnx451/DotNetWebSdkGeneration.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/DotNetWebSdkGeneration.dll": {}
-        }
-      },
       "Microsoft.AspNet.Authentication/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta5",
@@ -628,19 +605,6 @@
         "lib/NET35/DotLiquid.dll",
         "lib/NET40/DotLiquid.dll",
         "lib/NET45/DotLiquid.dll"
-      ]
-    },
-    "DotNetWebSdkGeneration/1.0.0.07": {
-      "sha512": "ENsmp9+cjJ90rCckV2W+if+sEwCetHhRETEZUyFdxQ4lm4SyS9NpROToK7SNcJNigtV0sw49pi3EU9xhLBDwzA==",
-      "files": [
-        "DotNetWebSdkGeneration.1.0.0.07.nupkg",
-        "DotNetWebSdkGeneration.1.0.0.07.nupkg.sha512",
-        "DotNetWebSdkGeneration.nuspec",
-        "app/project.json",
-        "app/start",
-        "app/start.cmd",
-        "lib/dnx451/DotNetWebSdkGeneration.dll",
-        "lib/dnx451/DotNetWebSdkGeneration.xml"
       ]
     },
     "Microsoft.AspNet.Authentication/1.0.0-beta5": {

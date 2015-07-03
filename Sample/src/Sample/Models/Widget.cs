@@ -1,4 +1,4 @@
-﻿using DotNetWebSdkGeneration;
+﻿using DotNetWebSdkGeneration.Attributes;
 
 namespace Sample.Models
 {
@@ -7,5 +7,6 @@ namespace Sample.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public Widget Subwidget { get; set; }
     }
 }

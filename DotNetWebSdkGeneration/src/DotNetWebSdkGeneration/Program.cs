@@ -4,7 +4,7 @@ using DotNetWebSdkGeneration.FileGeneration;
 
 namespace DotNetWebSdkGeneration
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

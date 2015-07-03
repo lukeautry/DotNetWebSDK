@@ -37,7 +37,7 @@ namespace DotNetWebSdkGeneration.FileGeneration
 
             foreach (var classToProperty in classNamesToProperties)
             {
-                var references = classNames.Where(className => classNames.Contains(className) && className != classToProperty.Key).ToImmutableList();
+                var references = classToProperty.Value.Where(p => classNames.Contains(p.Type) && p.Type != classToProperty.Key).Select(p => p.Type).Distinct().ToImmutableList();
                 models.Add(new TypeScriptClass(classToProperty.Key, classToProperty.Value, references));
             }
 

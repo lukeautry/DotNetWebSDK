@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
 using Sample.Models;
 using System.Collections.Generic;
-using DotNetWebSdkGeneration;
+using DotNetWebSdkGeneration.Attributes;
 using System.Linq;
 using System.Threading.Tasks;
 
