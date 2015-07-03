@@ -6,3 +6,6 @@ DotNetWebSdkGeneration/**/*.js
 Sample/src/Sample/Scripts/Generated/Api/Controller.js.map
 Sample/src/**/*.js.map
 Sample/.vs/*
+Sample/desktop.ini
+**/*.js.map
+Sample/src/Sample/Scripts/**/*.js
