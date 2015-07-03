@@ -31,6 +31,20 @@ define(["require", "exports", "./Controller"], function (require, exports, Contr
                 Data: JSON.stringify(person)
             });
         };
+        PeopleController.prototype.UpdatePerson = function (person) {
+            return this.CallApi({
+                Verb: "PATCH",
+                Endpoint: "People",
+                Data: JSON.stringify(person)
+            });
+        };
+        PeopleController.prototype.DeletePerson = function (personId) {
+            return this.CallApi({
+                Verb: "DELETE",
+                Endpoint: "People/" + personId,
+                Data: null
+            });
+        };
         return PeopleController;
     })(Controller);
     return PeopleController;

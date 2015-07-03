@@ -38,5 +38,21 @@ namespace Sample.Controllers
 
             return person;
         }
+
+        [Route("People")]
+        [AcceptVerbs("PATCH")]
+        public Person UpdatePerson([FromBody]Person person)
+        {
+            // Update person
+
+            return person;
+        }
+
+        [Route("People/{personId}")]
+        [AcceptVerbs("DELETE")]
+        public void DeletePerson(int personId)
+        {
+            // Delete widget
+        }
     }
 }

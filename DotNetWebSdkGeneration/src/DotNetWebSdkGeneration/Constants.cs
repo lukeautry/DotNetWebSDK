@@ -7,5 +7,6 @@
         internal const string StringType = "string";
         internal const string DateType = "Date";
         internal const string AnyType = "any";
+        internal const string VoidType = "void";
     }
 }

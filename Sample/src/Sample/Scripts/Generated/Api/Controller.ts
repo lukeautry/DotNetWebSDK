@@ -10,7 +10,7 @@ class Query {
 
         var request = new xhr('MSXML2.XMLHTTP.3.0');
         request.open(options.Verb, options.Endpoint, true);
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        request.setRequestHeader('Content-type', 'application/json');
         request.onreadystatechange = () => {
             if (request.readyState === 4) {
                 if (request.status >= 200 && request.status < 300) {

@@ -25,7 +25,7 @@ namespace DotNetWebSdkGeneration
             {TypeCode.String, Constants.StringType },
             {TypeCode.Char, Constants.StringType },
             {TypeCode.DBNull, Constants.StringType },
-            {TypeCode.DateTime, Constants.DateType },
+            {TypeCode.DateTime, Constants.DateType }
         };
 
         internal static string GetType(ITypeSymbol typeSymbol, IEnumerable<string> knownClassNames)
@@ -38,6 +38,24 @@ namespace DotNetWebSdkGeneration
             if (IsCollection(typeSymbol))
             {
                 return GetCollectionTypeName(typeSymbol, knownClassNames);
+            }
+
+            if (typeSymbol.Name == "Task")
+            {
+                var namedTypeSymbol = typeSymbol as INamedTypeSymbol;
+
+                var typeArgument = namedTypeSymbol?.TypeArguments.FirstOrDefault();
+                if (typeArgument != null)
+                {
+                    return GetType(typeArgument, knownClassNames);
+                }
+
+                return Constants.VoidType;
+            }
+
+            if (typeSymbol.Name.Equals("void", StringComparison.OrdinalIgnoreCase))
+            {
+                return Constants.VoidType;
             }
 
             return knownClassNames.Contains(typeSymbol.Name) ? typeSymbol.Name : Constants.AnyType;
@@ -84,7 +102,6 @@ namespace DotNetWebSdkGeneration
 
         private static string ExtractTypeNameFromSymbol(ITypeSymbol typeSymbol)
         {
-            // TODO: At some point we need to find a way to get the underlying type, but the API is making it hard
             var name = typeSymbol.ToString();
             if (name == "int?") { return "System.Int32"; }
             if (name == "bool?") { return "System.Boolean"; }

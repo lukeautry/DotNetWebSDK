@@ -27,6 +27,22 @@ class PeopleController extends Controller {
 			Data: JSON.stringify(person)			
 		});
 	}
+
+	public UpdatePerson(person: Person): ApiPromise<Person> {
+		return this.CallApi<Person>({
+			Verb: "PATCH",
+			Endpoint: "People",
+			Data: JSON.stringify(person)			
+		});
+	}
+
+	public DeletePerson(personId: number): ApiPromise<void> {
+		return this.CallApi<void>({
+			Verb: "DELETE",
+			Endpoint: "People/" + personId,
+			Data: null			
+		});
+	}
 }
 
 export = PeopleController;
