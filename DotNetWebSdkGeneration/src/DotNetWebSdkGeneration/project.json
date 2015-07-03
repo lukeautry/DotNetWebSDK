@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0.05",
+  "version": "1.0.0.07",
   "description": "DotNetWebSdkGeneration",
   "authors": [ "Luke Autry" ],
   "tags": [ "" ],
@@ -7,7 +7,8 @@
   "licenseUrl": "",
   "dependencies": {
     "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
-    "DotLiquid": "1.8.0"
+    "DotLiquid": "1.8.0",
+    "Microsoft.AspNet.Mvc.Core": "6.0.0-beta5"
   },
   "frameworks": {
     "dnx451": {
@@ -21,9 +22,10 @@
     }
   },
   "commands": {
-    "start": "DotNetWebSdkGeneration --source=Z:\\Code\\sdkgen\\Sample\\src\\Sample --output=Z:\\Code\\sdkgen\\Sample\\src\\Sample\\Scripts\\Generated"
+    "start": "DotNetWebSdkGeneration --source=Z:\\Code\\sdkgen\\Sample\\src\\Sample --output=Z:\\Code\\sdkgen\\Sample\\src\\Sample\\Scripts\\Generated --baseapiurl="
   },
   "resource": [
-    "Templates\\**\\*.liq"
+    "Templates\\**\\*.liq",
+    "Templates\\**\\*.ts"
   ]
 }

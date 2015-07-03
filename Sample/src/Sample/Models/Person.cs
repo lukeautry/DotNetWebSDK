@@ -14,10 +14,8 @@ namespace Sample.Models
         public DateTime? EditDate { get; set; }
         public List<string> PhoneNumbers { get; set; }
 
-        public Widget Widget { get; set; }
-        public List<Widget> WidgetList { get; set; } 
-        public Widget[] WidgetArray { get; set; }
-        public IEnumerable<Widget> WidgetIEnumerable { get; set; }
+        public Widget PrimaryWidget { get; set; }
+        public List<Widget> AllWidgets { get; set; } 
 
         public UnmarkedClass UnmarkedReference { get; set; }
     }

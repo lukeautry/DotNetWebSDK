@@ -6,4 +6,3 @@ define(["require", "exports"], function (require, exports) {
     })();
     return Person;
 });
-//# sourceMappingURL=Person.js.map

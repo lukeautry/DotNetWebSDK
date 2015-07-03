@@ -3,6 +3,7 @@
     internal enum CommandType
     {
         Output,
-        Source
+        Source,
+        BaseApiUrl
     }
 }

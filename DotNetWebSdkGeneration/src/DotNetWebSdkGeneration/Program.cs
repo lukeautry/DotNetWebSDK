@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using DotLiquid;
 using DotNetWebSdkGeneration.CommandLineParsing;
 using DotNetWebSdkGeneration.Models;
 
@@ -12,30 +9,24 @@ namespace DotNetWebSdkGeneration
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
             var arguments = new CommandLineArgumentParser(args);
             var outputPath = arguments.GetOutputPath();
             var sourcePath = arguments.GetSourcePath();
 
-            var sourceFileProcessors = GetSourceFileProcessors(sourcePath);
+
+            var sourceFileProcessors = SourceFileProcessor.GetSourceFileProcessors(sourcePath, typeof(GeneratedModel));
             var models = GetModels(sourceFileProcessors);
 
-            var template = GetClassTemplate();
-            foreach (var typeScriptClass in models)
-            {
-                var renderedContent = template.Render(Hash.FromAnonymousObject(new
-                {
-                    typeScriptClass.Name,
-                    Properties = typeScriptClass.Properties.ToList(),
-                    References = typeScriptClass.References.ToList()
-                }));
+            EmptyDirectory(new DirectoryInfo(outputPath));
 
-                File.WriteAllText(Path.Combine(outputPath, typeScriptClass.Name + ".ts"), renderedContent);
-            }
+            new ModelClassGenerator(models, outputPath);
+            new ApiClassGenerator(models, arguments);
         }
 
-        private static IEnumerable<TypeScriptClass> GetModels(ImmutableList<SourceFileProcessor> processors)
+        private static ImmutableList<TypeScriptClass> GetModels(ImmutableList<SourceFileProcessor> processors)
         {
             var models = new List<TypeScriptClass>();
 
@@ -51,31 +42,17 @@ namespace DotNetWebSdkGeneration
             return models.ToImmutableList();
         }
 
-        private static ImmutableList<SourceFileProcessor> GetSourceFileProcessors(string sourcePath)
+        public static void EmptyDirectory(DirectoryInfo directory)
         {
-            var sourceFilePaths = Directory.GetFiles(sourcePath, "*.cs", SearchOption.AllDirectories);
-            return sourceFilePaths.Select(path => new SourceFileProcessor(path)).Where(processor => processor.IsTaggedForGeneration).ToImmutableList();
-        }
-
-        private static Template GetClassTemplate()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "DotNetWebSdkGeneration.Templates.TypeScriptClass.liq";
-            string classTemplate;
-
-            using (var stream = assembly.GetManifestResourceStream(resourceName))
-            using (var reader = new StreamReader(stream))
+            foreach (var file in directory.GetFiles())
             {
-                classTemplate = reader.ReadToEnd();
+                file.Delete();
             }
 
-            if (string.IsNullOrEmpty(classTemplate))
+            foreach (var subDirectory in directory.GetDirectories())
             {
-                throw new Exception("Couldn't find " + resourceName);
+                subDirectory.Delete(true);
             }
-
-            var template = Template.Parse(classTemplate);
-            return template;
         }
     }
 }

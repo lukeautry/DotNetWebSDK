@@ -1,32 +1,25 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding BeforeBuild='typescript' Clean='clean' />
 
-var gulp = require("gulp"),
-  rimraf = require("rimraf"),
-  fs = require("fs");
+var gulp = require("gulp");
+var rimraf = require("rimraf");
+var fs = require("fs");
+var ts = require("gulp-typescript");
 
 eval("var project = " + fs.readFileSync("./project.json"));
 
 var paths = {
-  bower: "./bower_components/",
   lib: "./" + project.webroot + "/lib/"
 };
 
 gulp.task("clean", function (cb) {
-  rimraf(paths.lib, cb);
+    rimraf("./" + project.webroot + "/scripts/", cb);
 });
 
-gulp.task("copy", ["clean"], function () {
-  var bower = {
-    "bootstrap": "bootstrap/dist/**/*.{js,map,css,ttf,svg,woff,eot}",
-    "bootstrap-touch-carousel": "bootstrap-touch-carousel/dist/**/*.{js,css}",
-    "hammer.js": "hammer.js/hammer*.{js,map}",
-    "jquery": "jquery/jquery*.{js,map}",
-    "jquery-validation": "jquery-validation/jquery.validate.js",
-    "jquery-validation-unobtrusive": "jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
-  }
+gulp.task("typescript", function (cb) {
+    var result = gulp.src('Scripts/**/*.ts')
+        .pipe(ts({
+            module: "amd"
+        }));
 
-  for (var destinationDir in bower) {
-    gulp.src(paths.bower + bower[destinationDir])
-      .pipe(gulp.dest(paths.lib + destinationDir));
-  }
+    return result.js.pipe(gulp.dest('wwwroot/scripts'));
 });

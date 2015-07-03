@@ -16,7 +16,7 @@
     "Microsoft.Framework.Logging.Console": "1.0.0-beta5-11461",
     "Microsoft.Framework.DependencyInjection": "1.0.0-beta5-11470",
     "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta5-11470",
-    "DotNetWebSdkGeneration": "1.0.0.5"
+"DotNetWebSdkGeneration": "1.0.0.7"
   },
   "commands": {
     "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",

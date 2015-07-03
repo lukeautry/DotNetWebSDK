@@ -11,7 +11,7 @@
           "lib/NET45/DotLiquid.dll": {}
         }
       },
-      "DotNetWebSdkGeneration/1.0.0.05": {
+      "DotNetWebSdkGeneration/1.0.0.07": {
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "1.0.0-rc3",
           "DotLiquid": "1.8.0"
@@ -1461,11 +1461,11 @@
         "lib/NET45/DotLiquid.dll"
       ]
     },
-    "DotNetWebSdkGeneration/1.0.0.05": {
-      "sha512": "Q5PV+6CxXdhXH97wfDQGTuLnPir/JzJ8ZszEhKLQDySlRVowHJI4HS0mEoW7gsc/lbOxZH4s9MsRYm3OjliDJw==",
+    "DotNetWebSdkGeneration/1.0.0.07": {
+      "sha512": "ENsmp9+cjJ90rCckV2W+if+sEwCetHhRETEZUyFdxQ4lm4SyS9NpROToK7SNcJNigtV0sw49pi3EU9xhLBDwzA==",
       "files": [
-        "DotNetWebSdkGeneration.1.0.0.05.nupkg",
-        "DotNetWebSdkGeneration.1.0.0.05.nupkg.sha512",
+        "DotNetWebSdkGeneration.1.0.0.07.nupkg",
+        "DotNetWebSdkGeneration.1.0.0.07.nupkg.sha512",
         "DotNetWebSdkGeneration.nuspec",
         "app/project.json",
         "app/start",
@@ -2656,7 +2656,7 @@
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta5-11461",
       "Microsoft.Framework.DependencyInjection >= 1.0.0-beta5-11470",
       "Microsoft.Framework.DependencyInjection.Abstractions >= 1.0.0-beta5-11470",
-      "DotNetWebSdkGeneration >= 1.0.0.5"
+      "DotNetWebSdkGeneration >= 1.0.0.7"
     ],
     "DNX,Version=v4.5.1": []
   }

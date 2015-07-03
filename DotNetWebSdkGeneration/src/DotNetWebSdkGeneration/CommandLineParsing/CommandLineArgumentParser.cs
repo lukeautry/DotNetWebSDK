@@ -23,6 +23,18 @@ namespace DotNetWebSdkGeneration.CommandLineParsing
             return GetCommandValue(CommandType.Source);
         }
 
+        internal string GetBaseApiUrl()
+        {
+            try
+            {
+                return GetCommandValue(CommandType.BaseApiUrl);
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
         private string GetCommandValue(CommandType commandType)
         {
             try

@@ -8,10 +8,8 @@ class Person {
 	CreationDate: Date;
 	EditDate: Date;
 	PhoneNumbers: Array<string>;
-	Widget: Widget;
-	WidgetList: Array<Widget>;
-	WidgetArray: Array<Widget>;
-	WidgetIEnumerable: Array<Widget>;
+	PrimaryWidget: Widget;
+	AllWidgets: Array<Widget>;
 	UnmarkedReference: any;
 }
 
