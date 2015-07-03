@@ -15,7 +15,7 @@ namespace DotNetWebSdkGeneration.FileGeneration
     {
         private const string ApiDirectoryName = "Api";
 
-        internal static ImmutableList<TypeScriptApiController> Generate(ImmutableList<TypeScriptClass> models, CommandLineArgumentParser arguments)
+        internal static IReadOnlyList<TypeScriptApiController> Generate(IReadOnlyList<TypeScriptClass> models, CommandLineArgumentParser arguments)
         {
             var outputPath = arguments.GetOutputPath();
             FileGenerationHelper.CreateDirectoryIfNecessary(outputPath, ApiDirectoryName);
@@ -62,7 +62,7 @@ namespace DotNetWebSdkGeneration.FileGeneration
             return controllers.ToImmutableList();
         }
 
-        private static void RenderControllers(ImmutableList<TypeScriptApiController> controllers, string outputPath)
+        private static void RenderControllers(IEnumerable<TypeScriptApiController> controllers, string outputPath)
         {
             var template = FileGenerationHelper.GetTemplate("Api.DynamicController.liq");
 

@@ -13,7 +13,7 @@ namespace DotNetWebSdkGeneration.FileGeneration
     {
         private const string ModelsDirectoryName = "Models";
 
-        internal static ImmutableList<TypeScriptClass> Generate(CommandLineArgumentParser arguments)
+        internal static IReadOnlyList<TypeScriptClass> Generate(CommandLineArgumentParser arguments)
         {
             var sourceFileProcessors = SourceFileProcessor.GetSourceFileProcessors(arguments.GetSourcePath(), typeof(GeneratedModel));
 
@@ -28,7 +28,7 @@ namespace DotNetWebSdkGeneration.FileGeneration
             return models;
         }
 
-        private static ImmutableList<TypeScriptClass> GetModels(ImmutableList<SourceFileProcessor> processors)
+        private static IReadOnlyList<TypeScriptClass> GetModels(ImmutableList<SourceFileProcessor> processors)
         {
             var models = new List<TypeScriptClass>();
 
@@ -44,7 +44,7 @@ namespace DotNetWebSdkGeneration.FileGeneration
             return models.ToImmutableList();
         }
 
-        private static void RenderClassFiles(string outputPath, ImmutableList<TypeScriptClass> models)
+        private static void RenderClassFiles(string outputPath, IEnumerable<TypeScriptClass> models)
         {
             var template = FileGenerationHelper.GetTemplate("TypeScriptClass.liq");
 
