@@ -9,3 +9,4 @@ Sample/.vs/*
 Sample/desktop.ini
 **/*.js.map
 Sample/src/Sample/Scripts/**/*.js
+Sample/src/Sample/bin/Debug/dnx451/Sample.xml
